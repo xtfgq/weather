@@ -8,7 +8,7 @@ import javax.servlet.ServletContext;
 import com.github.kevinsawicki.http.HttpRequest;
 
 public class WeatherTask extends TimerTask{
-	private static boolean isRunning = false;
+	public  static boolean isRunning = false;
 	 String baseUrl="http://api.map.baidu.com/telematics/v3/weather?";
 	 //抓取的城市信息
 	 String[] strArray={"郑州","北京","石家庄"};
@@ -30,6 +30,9 @@ public class WeatherTask extends TimerTask{
 				String rs=result(strArray[i]);
 				if(rs!=null){
 					hm.put(strArray[i], rs);
+				}
+				if(i==strArray.length-1){
+					isRunning=false;
 				}
 			}
 		}else{
